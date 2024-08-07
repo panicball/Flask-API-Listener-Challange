@@ -1,0 +1,437 @@
+{
+	"info": {
+		"_postman_id": "6c4ec70a-ad5b-4f5b-a1bc-864332f01e73",
+		"name": "Flask API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37405194"
+	},
+	"item": [
+		{
+			"name": "Get log by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/get_log/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"get_log",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Example",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/get_log/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"get_log",
+								"2"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.3 Python/3.11.2"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 06 Aug 2024 12:30:40 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "240"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"content\": \"[2024-07-19 10:00:00] INFO: System started\\n[2024-07-19 10:02:00] ERROR: Failed to connect to database\\n[2024-07-19 10:03:00] MEASUREMENT: o2 concentration - 25\\n[2024-07-19 10:03:30] WARNING: Going to o2 alarm123123\\n\",\n    \"id\": 2\n}"
+				}
+			]
+		},
+		{
+			"name": "Create new log",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"content\": \"[2024-07-19 10:00:00] INFO: System started\\n[2024-07-19 10:02:00] ERROR: Failed to connect to database\\n[2024-07-19 10:03:00] MEASUREMENT: o2 concentration - 25\\n[2024-07-19 10:03:30] WARNING: Going to o2 alarm123123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/save_log",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"save_log"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Example",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"content\": \"[2024-07-19 10:00:00] INFO: System started\\n[2024-07-19 10:02:00] ERROR: Failed to connect to database\\n[2024-07-19 10:03:00] MEASUREMENT: o2 concentration - 25\\n[2024-07-19 10:03:30] WARNING: Going to o2 alarm123123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/save_log",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"save_log"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.3 Python/3.11.2"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 06 Aug 2024 12:31:12 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "69"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 9,\n    \"message\": \"Log file saved successfully! Filename log_9.log\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Update existing log",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"content\": \"[2024-07-19 10:00:00] INFO: System started\\n[2024-07-19 10:02:00] ERROR: Failed to connect to database\\n[2024-07-19 10:03:00] MEASUREMENT: o2 concentration - 25\\n[2024-07-19 10:03:30] WARNING: Going to o2 alarm\\n[2024-07-19 10:04:00] WARNING: Running low on storage space\\n[2024-07-19 10:05:00] MEASUREMENT: co concentration - 0\\n[2024-07-19 10:06:00] WARNING: Running low on storage space\\n[2024-07-19 10:07:00] MEASUREMENT: o2 concentration - 21\\n[2024-07-19 10:08:30] WARNING: Exiting o2 alarm\\n[2024-07-19 10:09:00] WARNING: Running low on storage space\\n[2024-07-19 10:10:00] MEASUREMENT: co concentration - 0.1\\n[2024-07-19 10:11:00] WARNING: Running low on storage space\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/update_log/2?append=true",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"update_log",
+						"2"
+					],
+					"query": [
+						{
+							"key": "append",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Example",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"content\": \"[2024-07-19 10:00:00] INFO: System started\\n[2024-07-19 10:02:00] ERROR: Failed to connect to database\\n[2024-07-19 10:03:00] MEASUREMENT: o2 concentration - 25\\n[2024-07-19 10:03:30] WARNING: Going to o2 alarm\\n[2024-07-19 10:04:00] WARNING: Running low on storage space\\n[2024-07-19 10:05:00] MEASUREMENT: co concentration - 0\\n[2024-07-19 10:06:00] WARNING: Running low on storage space\\n[2024-07-19 10:07:00] MEASUREMENT: o2 concentration - 21\\n[2024-07-19 10:08:30] WARNING: Exiting o2 alarm\\n[2024-07-19 10:09:00] WARNING: Running low on storage space\\n[2024-07-19 10:10:00] MEASUREMENT: co concentration - 0.1\\n[2024-07-19 10:11:00] WARNING: Running low on storage space\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/update_log/2?append=true",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"update_log",
+								"2"
+							],
+							"query": [
+								{
+									"key": "append",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.3 Python/3.11.2"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 06 Aug 2024 11:31:59 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "60"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Log file log_2.log updated successfully!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete existing log file",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/delete_log/3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"delete_log",
+						"3"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Example",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:5000/delete_log/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"delete_log",
+								"3"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.3 Python/3.11.2"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 07 Aug 2024 04:41:04 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "47"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Log file log_3.log deleted.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Parse log file content by id or passed file content",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"content\": \"[2024-07-19 10:00:00] INFO: System started\\n[2024-07-19 10:02:00] ERROR: Failed to connect to database\\n[2024-07-19 10:03:00] MEASUREMENT: o2 concentration - 25\\n[2024-07-19 10:03:30] WARNING: Going to o2 alarm\\n[2024-07-19 10:04:00] WARNING: Running low on storage space\\n[2024-07-19 10:05:00] MEASUREMENT: co concentration - 0\\n[2024-07-19 10:06:00] WARNING: Running low on storage space\\n[2024-07-19 10:07:00] MEASUREMENT: o2 concentration - 21\\n[2024-07-19 10:08:30] WARNING: Exiting o2 alarm\\n[2024-07-19 10:09:00] WARNING: Running low on storage space\\n[2024-07-19 10:10:00] MEASUREMENT: co concentration - 0.1\\n[2024-07-19 10:11:00] WARNING: Running low on storage space\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/parse_log",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"parse_log"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Example",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"content\": \"[2024-07-19 10:00:00] INFO: System started\\n[2024-07-19 10:02:00] ERROR: Failed to connect to database\\n[2024-07-19 10:03:00] MEASUREMENT: o2 concentration - 25\\n[2024-07-19 10:03:30] WARNING: Going to o2 alarm\\n[2024-07-19 10:04:00] WARNING: Running low on storage space\\n[2024-07-19 10:05:00] MEASUREMENT: co concentration - 0\\n[2024-07-19 10:06:00] WARNING: Running low on storage space\\n[2024-07-19 10:07:00] MEASUREMENT: o2 concentration - 21\\n[2024-07-19 10:08:30] WARNING: Exiting o2 alarm\\n[2024-07-19 10:09:00] WARNING: Running low on storage space\\n[2024-07-19 10:10:00] MEASUREMENT: co concentration - 0.1\\n[2024-07-19 10:11:00] WARNING: Running low on storage space\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/parse_log",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"parse_log"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Werkzeug/3.0.3 Python/3.11.2"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 06 Aug 2024 12:31:09 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "278"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"alarms\": {\n        \"count\": 2,\n        \"timestamps\": [\n            \"2024-07-19 10:03:30\",\n            \"2024-07-19 10:08:30\"\n        ]\n    },\n    \"log_message_count\": {\n        \"DEBUG\": 0,\n        \"ERROR\": 1,\n        \"INFO\": 1,\n        \"MEASUREMENT\": 4,\n        \"WARNING\": 6\n    },\n    \"measurements\": {\n        \"co\": {\n            \"average\": 0.05,\n            \"highest\": 0.1,\n            \"lowest\": 0\n        },\n        \"o2\": {\n            \"average\": 23,\n            \"highest\": 25,\n            \"lowest\": 21\n        }\n    }\n}"
+				}
+			]
+		}
+	]
+}
